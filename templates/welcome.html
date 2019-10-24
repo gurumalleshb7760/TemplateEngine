@@ -1,0 +1,7 @@
+{% extends "layout.html" %} <!-- adding the created layout -->
+{% block content %}
+
+<h2> Welcome {{ message }} </h2>
+<a href="{{ url_for('index') }}"> Previous page </a> <!-- linked to the index page -->
+
+{% endblock %}

@@ -1,0 +1,23 @@
+<!-- layout created for all the website, we just have to include it in other html files -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Template Engine</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> <!-- we link the css file -->
+        <!-- we will certainly link a bootstrap css further in time -->
+    </head>
+
+    <body>
+        <header>
+            <div class="container">
+                <h1 id="title">Template Engine</h1>
+            </div>
+        </header>
+        <div class="container">
+            {% block content %}
+            <!-- here will be the content of others html files -->
+            {% endblock %}
+        </div>
+    </body>
+</html>

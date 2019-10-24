@@ -1,0 +1,14 @@
+{% extends "layout.html" %} <!-- adding the created layout -->
+{% block content %}
+
+<h2>Search for your name</h2>
+<form action="." method="POST"> <!-- creating a listed form with all the names in datasheet -->
+    <select name="list_name">
+        {% for name in message %} <!-- searching for the names -->
+        <option name={{name}}>{{ name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">OK</button>
+</form>
+
+{% endblock %}
