@@ -17,18 +17,23 @@ names = [name for name in CSVFile.get('NOM')] # creating a list with all the nam
 # print(names)
 
 
+def get_all_info(name):
+    name_index = CSVFile[CSVFile['NOM'] == name].index.values.astype(int)[0]
+    return CSVFile.loc[name_index]
+
+
 # creating the index page of our website
 @app.route('/')
 def index():
     return render_template("index.html", message=names)
 
 
-# creating the introduction page : NOT FINISHED YET
+# creating the introduction page
 @app.route('/', methods=['POST'])
 def text_box():
     text = request.form['list_name']
-    processed_text = text.upper()
-    return render_template("welcome.html", message=processed_text)
+    all_info = get_all_info(text)
+    return render_template("welcome.html", message=all_info)
 
 
 if __name__ == '__main__':

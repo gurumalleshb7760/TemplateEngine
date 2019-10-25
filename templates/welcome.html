@@ -1,7 +1,10 @@
 {% extends "layout.html" %} <!-- adding the created layout -->
 {% block content %}
 
-<h2> Welcome {{ message }} </h2>
+ <!-- we get all info of the person and present it -->
+<h2> Welcome {{ message.get('NOM') }} {{ message.get('PRENOM') }} ! </h2>
+<h3> You are {{ message.get('AGE') }} years old and you live in {{ message.get('VILLE') }}.</h3>
+<h3> You work as a {{ message.get('METIER') }}.</h3>
 <a href="{{ url_for('index') }}"> Previous page </a> <!-- linked to the index page -->
 
 {% endblock %}
