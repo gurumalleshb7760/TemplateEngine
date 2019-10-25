@@ -2,9 +2,10 @@
 {% block content %}
 
  <!-- we get all info of the person and present it -->
-<h2> Welcome {{ message.get('NOM') }} {{ message.get('PRENOM') }} ! </h2>
-<h3> You are {{ message.get('AGE') }} years old and you live in {{ message.get('VILLE') }}.</h3>
-<h3> You work as a {{ message.get('METIER') }}.</h3>
-<a href="{{ url_for('index') }}"> Previous page </a> <!-- linked to the index page -->
-
+<div class="text-center">
+    <h2> Welcome {{ message.get('SURNAME') }} {{ message.get('FIRST_NAME') }} ! </h2>
+    <p> You are {{ message.get('AGE') }} years old and you live in {{ message.get('CITY') }}.</p>
+    <p> You work as a {{ message.get('WORK') }}.</p>
+    <a href="{{ url_for('index') }}"> Previous page </a> <!-- linked to the index page -->
+</div>
 {% endblock %}

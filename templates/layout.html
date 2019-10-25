@@ -3,26 +3,31 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Template Engine</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> <!-- we link the css file -->
-        <!-- we will certainly link a bootstrap css further in time -->
     </head>
 
     <body>
         <header>
-            <div class="container">
+            <div class="container text-center fixed-top page-header bg-dark">
                 <h1 id="title">Template Engine</h1>
             </div>
         </header>
-        <div class="container">
+        <div class="container" id="principal-block">
             {% block content %}
             <!-- here will be the content of others html files -->
             {% endblock %}
         </div>
-        <footer>
+        <footer class="page-footer text-center fixed-bottom bg-dark">
             <div class="container">
-                <h6> Created by Léa BANQUART for Template Engine project.</h6>
-                <h6> ENSISA, France, 2019/2020</h6>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6> Created by Léa BANQUART for Template Engine project.</h6>
+                        <h6> ENSISA, France, 2019/2020</h6>
+                    </div>
+                </div>
             </div>
         </footer>
     </body>

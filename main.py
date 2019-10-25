@@ -6,19 +6,19 @@ import pandas as pd
 # calling Flask API
 app = Flask(__name__)
 
-file_path = './static/data/Nom_Prenom_Age_Ville_Metier.csv'
+file_path = './static/data/Surname_FirstName_Age_City_Work.csv'
 
 CSVFile = pd.read_csv(file_path, index_col="ID")  # stocking the data
 
 # print(CSVFile)
 
-names = [name for name in CSVFile.get('NOM')] # creating a list with all the names from the CSV file
+names = [name for name in CSVFile.get('SURNAME')] # creating a list with all the names from the CSV file
 
 # print(names)
 
 
 def get_all_info(name):
-    name_index = CSVFile[CSVFile['NOM'] == name].index.values.astype(int)[0]
+    name_index = CSVFile[CSVFile['SURNAME'] == name].index.values.astype(int)[0]
     return CSVFile.loc[name_index]
 
 
