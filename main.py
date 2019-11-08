@@ -1,6 +1,4 @@
-from flask import Flask
-from flask import request
-from flask import render_template
+from flask import *
 import pandas as pd
 
 # calling Flask API
@@ -12,7 +10,7 @@ CSVFile = pd.read_csv(file_path, index_col="ID")  # stocking the data
 
 # print(CSVFile)
 
-names = [name for name in CSVFile.get('SURNAME')] # creating a list with all the names from the CSV file
+names = [name for name in CSVFile.get('SURNAME')]  # creating a list with all the names from the CSV file
 
 # print(names)
 
@@ -28,12 +26,18 @@ def index():
     return render_template("index.html", message=names)
 
 
-# creating the introduction page
+# creating redirection to the template
 @app.route('/', methods=['POST'])
-def text_box():
-    text = request.form['list_name']
-    all_info = get_all_info(text)
-    return render_template("welcome.html", message=all_info)
+def redirect_to_template():
+    name = request.form['list_name']
+    return redirect(url_for('template', name=name))
+
+
+# creating the introduction page
+@app.route('/template_<name>', methods=['GET', 'POST'])
+def template(name):
+    all_info = get_all_info(name)
+    return render_template(all_info.get('TEMPLATE'), message=all_info)
 
 
 if __name__ == '__main__':
