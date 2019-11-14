@@ -1,8 +1,0 @@
-ID,SURNAME,FIRST_NAME,AGE,CITY,WORK,TEMPLATE
-1,DUPONT,Simon,34,Paris,Fireman,/welcome.html
-2,DUPUIS,Jean,52,Nantes,Police Man,/welcome.html
-3,MARTIN,Laure,60,Nice,Cashier,/welcome.html
-4,SMITH,Paul,45,Bordeaux,Accountant,/welcome.html
-5,LAURENT,Mathieu,23,Orléans,Dressmaker,/welcome.html
-6,PETIT,Martine,19,Strasbourg,Head chef,/welcome.html
-7,LACROIX,Sylvie,48,Lille,Sport Teacher,/welcome.html

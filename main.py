@@ -1,29 +1,30 @@
+# -*-coding:Utf-8 -*
 from flask import *
-import pandas as pd
+import static.modules.functions as func
 
-# calling Flask API
+# --- calling Flask API ---
 app = Flask(__name__)
 
-file_path = './static/data/Surname_FirstName_Age_City_Work.csv'
+# ------------ creating the dictionary with our data ------------
 
-CSVFile = pd.read_csv(file_path, index_col="ID")  # stocking the data
+JSON_file_path = './static/data/Person.json'
 
-# print(CSVFile)
+# reading the data and putting it in a dictionary, adding default template if no template already there
+JSONDict = func.json_to_dictionary(JSON_file_path)
 
-names = [name for name in CSVFile.get('SURNAME')]  # creating a list with all the names from the CSV file
+# putting the dictionary in the JSON file
+func.dictionary_to_json(JSON_file_path, JSONDict)
 
-# print(names)
-
-
-def get_all_info(name):
-    name_index = CSVFile[CSVFile['SURNAME'] == name].index.values.astype(int)[0]
-    return CSVFile.loc[name_index]
+# ------------ Variables and constants ------------
+# creating a list with all the names from the JSON file
+names = func.get_surnames(JSONDict)
 
 
+# ------------ Routes ------------
 # creating the index page of our website
 @app.route('/')
 def index():
-    return render_template("index.html", message=names)
+    return render_template("index.html", names=names)
 
 
 # creating redirection to the template
@@ -36,8 +37,9 @@ def redirect_to_template():
 # creating the introduction page
 @app.route('/template_<name>', methods=['GET', 'POST'])
 def template(name):
-    all_info = get_all_info(name)
-    return render_template(all_info.get('TEMPLATE'), message=all_info)
+    all_info = func.get_all_info(JSONDict, name)
+    temp = func.get_template(JSONDict, name)
+    return render_template('welcome.html', all_info=all_info, template=temp)
 
 
 if __name__ == '__main__':

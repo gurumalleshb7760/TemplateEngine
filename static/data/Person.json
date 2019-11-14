@@ -1,0 +1,90 @@
+{
+    "1": {
+        "SURNAME": "DUPONT",
+        "FIRST_NAME": "Simon",
+        "AGE": 34,
+        "CITY": "Paris",
+        "WORK": "Fireman",
+        "TEMPLATE": {
+            "GENDER": "Neutral",
+            "PRESENTATION_TEXT": ""
+        }
+    },
+    "2": {
+        "SURNAME": "DUPUIS",
+        "FIRST_NAME": "Jean",
+        "AGE": 52,
+        "CITY": "Nantes",
+        "WORK": "Police Man",
+        "TEMPLATE": {
+            "GENDER": "Neutral",
+            "PRESENTATION_TEXT": ""
+        }
+    },
+    "3": {
+        "SURNAME": "MARTIN",
+        "FIRST_NAME": "Laure",
+        "AGE": 60,
+        "CITY": "Nice",
+        "WORK": "Cashier",
+        "TEMPLATE": {
+            "GENDER": "Neutral",
+            "PRESENTATION_TEXT": ""
+        }
+    },
+    "4": {
+        "SURNAME": "SMITH",
+        "FIRST_NAME": "Paul",
+        "AGE": 45,
+        "CITY": "Bordeaux",
+        "WORK": "Accountant",
+        "TEMPLATE": {
+            "GENDER": "Neutral",
+            "PRESENTATION_TEXT": ""
+        }
+    },
+    "5": {
+        "SURNAME": "LAURENT",
+        "FIRST_NAME": "Mathieu",
+        "AGE": 23,
+        "CITY": "Orléans",
+        "WORK": "Dressmaker",
+        "TEMPLATE": {
+            "GENDER": "Neutral",
+            "PRESENTATION_TEXT": ""
+        }
+    },
+    "6": {
+        "SURNAME": "PETIT",
+        "FIRST_NAME": "Martine",
+        "AGE": 19,
+        "CITY": "Strasbourg",
+        "WORK": "Head chef",
+        "TEMPLATE": {
+            "GENDER": "Neutral",
+            "PRESENTATION_TEXT": ""
+        }
+    },
+    "7": {
+        "SURNAME": "LACROIX",
+        "FIRST_NAME": "Sylvie",
+        "AGE": 48,
+        "CITY": "Lille",
+        "WORK": "Sport Teacher",
+        "TEMPLATE": {
+            "GENDER": "Neutral",
+            "PRESENTATION_TEXT": ""
+        }
+    },
+    "8": {
+        "SURNAME": "DUBOIS",
+        "FIRST_NAME": "Corinne",
+        "AGE": 37,
+        "CITY": "Toulouse",
+        "WORK": "Astronaut",
+        "TEMPLATE": {
+            "GENDER": "Neutral",
+            "PRESENTATION_TEXT": ""
+        }
+    }
+}

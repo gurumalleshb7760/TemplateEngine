@@ -5,7 +5,7 @@
     <div class="form-group text-center">
         <label>Search for your name</label>
         <select name="list_name" class="form-control" id="form-name">
-            {% for name in message %} <!-- searching for the names -->
+            {% for name in names %} <!-- searching for the names -->
             <option name={{name}}>{{ name }}</option>
             {% endfor %}
         </select>
