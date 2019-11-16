@@ -2,16 +2,18 @@
 {% block content %}
 
 <!-- Edit button allowing to modify the template -->
-<div class="text-center">
-    <button type="button" class="btn btn-secondary">Edit</button>
-</div>
+<form action="{{ url_for('redirect_to_edit', name=name) }}" method="POST" class="text-center">
+    <div class="text-center pull-left">
+        <button name="edit_button" type="submit" class="btn btn-secondary">Edit</button>
+    </div>
+</form>
 
 <!-- we get all info of the person and present it -->
 <div class="text-center">
     <!-- changing the title depending of the gender of a person -->
-    {% if template['GENDER'] == "FEMALE" %}
+    {% if template['GENDER'] == "Female" %}
         <h2> Welcome Ms.{{ all_info['SURNAME'] }} {{ all_info['FIRST_NAME'] }} ! </h2>
-    {% elif template['GENDER'] == "MALE" %}
+    {% elif template['GENDER'] == "Male" %}
         <h2> Welcome Mr.{{ all_info['SURNAME'] }} {{ all_info['FIRST_NAME'] }} ! </h2>
     {% else %}
         <h2> Welcome {{ all_info['SURNAME'] }} {{ all_info['FIRST_NAME'] }} ! </h2>

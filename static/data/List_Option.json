@@ -1,0 +1,9 @@
+{
+  "GENDER": {
+    "MALE": "Male",
+    "FEMALE": "Female",
+    "NON-BINARY": "Non Binary",
+    "NEUTRAL": "Neutral",
+    "OTHER": "Other"
+  }
+}

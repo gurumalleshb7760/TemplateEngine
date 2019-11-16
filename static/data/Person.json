@@ -6,7 +6,7 @@
         "CITY": "Paris",
         "WORK": "Fireman",
         "TEMPLATE": {
-            "GENDER": "Neutral",
+            "GENDER": "Male",
             "PRESENTATION_TEXT": ""
         }
     },
@@ -50,8 +50,8 @@
         "CITY": "Orléans",
         "WORK": "Dressmaker",
         "TEMPLATE": {
-            "GENDER": "Neutral",
-            "PRESENTATION_TEXT": ""
+            "GENDER": "Male",
+            "PRESENTATION_TEXT": "I love chocolate"
         }
     },
     "6": {

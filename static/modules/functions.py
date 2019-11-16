@@ -5,7 +5,7 @@ from OptionsTemplate import OptionTemplate
 
 
 # function putting the file in a dictionary and adding the default template if there is no template
-def json_to_dictionary(path):
+def json_person_to_dictionary(path):
     with open(path, 'r') as JSONData:
         json_dict = json.load(JSONData)
 
@@ -14,6 +14,13 @@ def json_to_dictionary(path):
         if 'TEMPLATE' not in value_dict.keys():
             value_dict['TEMPLATE'] = OptionTemplate()
         json_dict[key] = value_dict
+    return json_dict
+
+
+# function allowing to put any file in a dictionary
+def other_json_person_to_dictionary(path):
+    with open(path, 'r') as JSONData:
+        json_dict = json.load(JSONData)
     return json_dict
 
 
@@ -47,3 +54,26 @@ def get_all_info(dictionary, name):
         val_dict = dict(val)
         if val_dict['SURNAME'] == name:
             return val_dict
+
+
+# function finding the index corresponding to a surname
+def find_index_from_surname(dictionary, name):
+    for index, val in dictionary.items():
+        val_dict = dict(val)
+        if val_dict['SURNAME'] == name:
+            return index
+
+
+# function editing the dictionnary
+def edit_options(dictionary, name, options):
+    person = get_all_info(dictionary, name)
+    template = get_template(dictionary, name)
+    index = find_index_from_surname(dictionary, name)
+    for old_option, old_value in template.items():
+        for new_option, new_value in options.items():
+            if old_option == new_option:
+                template[old_option] = new_value
+    person['TEMPLATE'] = template
+    dictionary[index] = person
+    return dictionary
+
