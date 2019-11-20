@@ -1,7 +1,7 @@
 {% extends "layout.html" %} <!-- adding the created layout -->
 {% block content %}
 
-<form action="." method="POST" class="text-center"> <!-- creating a listed form with all the names in datasheet -->
+<form action="{{url_for('redirect_to_template_from_index')}}" method="POST" class="text-center"> <!-- creating a listed form with all the names in datasheet -->
     <div class="form-group text-center">
         <label>Search for your name</label>
         <select name="list_name" class="form-control" id="form-name">
@@ -12,5 +12,46 @@
     </div>
     <button type="submit" class="btn btn-primary text-center">OK</button>
 </form>
+<br/>
+<br/>
+<!-- creating a table to search someone in there -->
+<div class="text-center">
+    <label> Or search in this table</label>
+</div>
+<form action="{{url_for('redirect_index')}}" method="POST" class="text-center form-inline pull-left"> <!-- creating a form with parameters -->
+    <label>Sorted by: </label>
+    <select name="search-by" class="form-control" id="form_search">
+        <option name=index> INDEX </option>
+        {% for param in params %} <!-- searching for the names -->
+            <option name={{param}}>{{ param }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary text-center">OK</button>
+</form>
+<br/>
+<br/>
+<div class="text-center table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+            <th scope="col" class="text-center"> INDEX </th>
+            {% for param in params%}
+                <th scope="col" class="text-center">{{ param }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for index, value in infos.items() %}
+            <tr>
+                <th scope="row" class="text-center">{{ index }}</th>
+                {% for param in params %}
+                    <td> <a href="{{url_for('redirect_to_template_from_index')}}">{{ value[param] }}</a></td>
+                <!-- rendre cliquable les liens du tableau -->
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 {% endblock %}

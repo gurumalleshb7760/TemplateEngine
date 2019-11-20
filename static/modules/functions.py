@@ -56,6 +56,29 @@ def get_all_info(dictionary, name):
             return val_dict
 
 
+# function getting all the info of a person, minus the template
+def get_global_infos_except_template(dictionary):
+    global_vals = dict()
+    for index, val in dictionary.items():
+        val_dict = dict(val)
+        val_minus_template = dict()
+        for key, value in val_dict.items():
+            if key != 'TEMPLATE':
+                val_minus_template[key] = value
+        global_vals[index] = val_minus_template
+    return global_vals
+
+
+# function getting all the parameters' names, minus the template
+def get_parameters_names_except_template(dictionary):
+    parameters = list()
+    val_dict = dict(dictionary["1"])
+    for key in val_dict.keys():
+        if key != 'TEMPLATE':
+            parameters.append(key)
+    return parameters
+
+
 # function finding the index corresponding to a surname
 def find_index_from_surname(dictionary, name):
     for index, val in dictionary.items():
@@ -77,3 +100,23 @@ def edit_options(dictionary, name, options):
     dictionary[index] = person
     return dictionary
 
+
+# function sorting a dictionary by the parameter sort
+def sort_by(dictionary, sort):
+    sorted_dict = dict()
+    if sort == "INDEX":
+        sorted_dict = dictionary
+    else:
+        list_to_sort = list()
+        for value in dictionary.values():
+            val_dict = dict(value)
+            for key, val in val_dict.items():
+                if key == sort:
+                    list_to_sort.append(val)
+        sorted_list = sorted(list_to_sort)
+        for i in range(len(sorted_list)):
+            for key, value in dictionary.items():
+                val_dict = dict(value)
+                if val_dict[sort] == sorted_list[i]:
+                    sorted_dict[key] = val_dict
+    return sorted_dict

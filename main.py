@@ -24,12 +24,30 @@ names = func.get_surnames(JSONDict)
 # ------------ Routes ------------
 # creating the index page of our website
 @app.route('/')
-def index():
-    return render_template("index.html", names=names)
+def index(sort='INDEX'):
+    infos = func.get_global_infos_except_template(JSONDict)
+    parameters = func.get_parameters_names_except_template(JSONDict)
+    return render_template("index.html", names=names, infos=infos, params=parameters, sort=sort)
+
+
+# creating redirection to sort the table of the index page
+@app.route('/redir_index', methods=['GET', 'POST'])
+def redirect_index():
+    sort = request.form['search-by']
+    return redirect(url_for('index_sorted', sort=sort))
+
+
+# creating the index page of our website
+@app.route('/sorted_by_<sort>', methods=['GET', 'POST'])
+def index_sorted(sort):
+    infos = func.get_global_infos_except_template(JSONDict)
+    infos_sorted = func.sort_by(infos, sort)
+    parameters = func.get_parameters_names_except_template(JSONDict)
+    return render_template("index.html", names=names, infos=infos_sorted, params=parameters, sort=sort)
 
 
 # creating redirection to the template from index page
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/redir_template', methods=['GET', 'POST'])
 def redirect_to_template_from_index():
     name = request.form['list_name']
     return redirect(url_for('template', name=name))
