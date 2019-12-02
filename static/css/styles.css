@@ -13,3 +13,11 @@ footer {
 .table-wrapper-scroll-y {
     display: block;
 }
+
+.table-link {
+    color: black;
+} /* CSS link color (red) */
+.table-link:hover {
+    color: gray;
+    text-decoration: none;
+}

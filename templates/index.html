@@ -45,8 +45,11 @@
             <tr>
                 <th scope="row" class="text-center">{{ index }}</th>
                 {% for param in params %}
-                    <td> <a href="{{url_for('redirect_to_template_from_index')}}">{{ value[param] }}</a></td>
-                <!-- rendre cliquable les liens du tableau -->
+                    <td>
+                        <a class="table-link" href="{{ url_for('redirect_to_template_from_index_table', name=value['SURNAME']) }}">
+                            {{ value[param] }}
+                        </a>
+                    </td>
                 {% endfor %}
             </tr>
         {% endfor %}

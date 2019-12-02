@@ -53,8 +53,14 @@ def redirect_to_template_from_index():
     return redirect(url_for('template', name=name))
 
 
+# creating redirection to the template from table in index page
+@app.route('/redir_template_from_table_<name>', methods=['GET', 'POST'])
+def redirect_to_template_from_index_table(name):
+    return redirect(url_for('template', name=name))
+
+
 # creating the introduction page
-@app.route('/template_<name>/', methods=['GET', 'POST'])
+@app.route('/template-instance_<name>/', methods=['GET', 'POST'])
 def template(name):
     all_info = func.get_all_info(JSONDict, name)
     temp = func.get_template(JSONDict, name)
