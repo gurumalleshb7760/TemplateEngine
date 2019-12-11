@@ -1,7 +1,6 @@
 # -*-coding:Utf-8 -*
 """ This module regroups several functions used by the main program"""
 import json
-from OptionsTemplate import OptionTemplate
 
 
 # function putting the file in a dictionary and adding the default template if there is no template
@@ -12,7 +11,7 @@ def json_person_to_dictionary(path):
     for key, value in json_dict.items():
         value_dict = dict(value)
         if 'TEMPLATE' not in value_dict.keys():
-            value_dict['TEMPLATE'] = OptionTemplate()
+            value_dict['TEMPLATE'] = "default"
         json_dict[key] = value_dict
     return json_dict
 
@@ -88,17 +87,16 @@ def find_index_from_surname(dictionary, name):
 
 
 # function editing the dictionnary
-def edit_options(dictionary, name, options):
-    person = get_all_info(dictionary, name)
-    template = get_template(dictionary, name)
-    index = find_index_from_surname(dictionary, name)
-    for old_option, old_value in template.items():
-        for new_option, new_value in options.items():
-            if old_option == new_option:
-                template[old_option] = new_value
-    person['TEMPLATE'] = template
-    dictionary[index] = person
-    return dictionary
+def edit_template(dictionary1, dictionary2, name, template):
+    person = get_all_info(dictionary1, name)
+    index = find_index_from_surname(dictionary1, name)
+    temp = template.replace('"', '\\"')
+    temp = temp[1:]
+    temp = "eval("+temp+".HTML()\")"
+    person['TEMPLATE'] = "t_"+name+index
+    dictionary1[index] = person
+    dictionary2["t_"+name+index] = temp
+    return [dictionary1, dictionary2]
 
 
 # function sorting a dictionary by the parameter sort

@@ -5,10 +5,7 @@
         "AGE": 34,
         "CITY": "Paris",
         "WORK": "Fireman",
-        "TEMPLATE": {
-            "GENDER": "Male",
-            "PRESENTATION_TEXT": "I love sushi !"
-        }
+        "TEMPLATE": "t_DUPONT1"
     },
     "2": {
         "SURNAME": "DUPUIS",
@@ -16,10 +13,7 @@
         "AGE": 52,
         "CITY": "Nantes",
         "WORK": "Police Man",
-        "TEMPLATE": {
-            "GENDER": "Neutral",
-            "PRESENTATION_TEXT": ""
-        }
+        "TEMPLATE": "default"
     },
     "3": {
         "SURNAME": "MARTIN",
@@ -27,10 +21,7 @@
         "AGE": 60,
         "CITY": "Nice",
         "WORK": "Cashier",
-        "TEMPLATE": {
-            "GENDER": "Female",
-            "PRESENTATION_TEXT": ""
-        }
+        "TEMPLATE": "default"
     },
     "4": {
         "SURNAME": "SMITH",
@@ -38,10 +29,7 @@
         "AGE": 45,
         "CITY": "Bordeaux",
         "WORK": "Accountant",
-        "TEMPLATE": {
-            "GENDER": "Non Binary",
-            "PRESENTATION_TEXT": ""
-        }
+        "TEMPLATE": "default"
     },
     "5": {
         "SURNAME": "LAURENT",
@@ -49,10 +37,7 @@
         "AGE": 23,
         "CITY": "Orleans",
         "WORK": "Dressmaker",
-        "TEMPLATE": {
-            "GENDER": "Male",
-            "PRESENTATION_TEXT": "I love chocolate"
-        }
+        "TEMPLATE": "default"
     },
     "6": {
         "SURNAME": "PETIT",
@@ -60,10 +45,7 @@
         "AGE": 19,
         "CITY": "Strasbourg",
         "WORK": "Head chef",
-        "TEMPLATE": {
-            "GENDER": "Female",
-            "PRESENTATION_TEXT": ""
-        }
+        "TEMPLATE": "default"
     },
     "7": {
         "SURNAME": "LACROIX",
@@ -71,10 +53,7 @@
         "AGE": 48,
         "CITY": "Lille",
         "WORK": "Sport Teacher",
-        "TEMPLATE": {
-            "GENDER": "Other",
-            "PRESENTATION_TEXT": ""
-        }
+        "TEMPLATE": "default"
     },
     "8": {
         "SURNAME": "DUBOIS",
@@ -82,9 +61,6 @@
         "AGE": 37,
         "CITY": "Toulouse",
         "WORK": "Astronaut",
-        "TEMPLATE": {
-            "GENDER": "Neutral",
-            "PRESENTATION_TEXT": ""
-        }
+        "TEMPLATE": "default"
     }
 }

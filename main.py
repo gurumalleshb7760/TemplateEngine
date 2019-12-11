@@ -8,10 +8,14 @@ app = Flask(__name__)
 # ------------ creating the dictionary with our data ------------
 
 JSON_file_path = './static/data/Person.json'
-OPTION_file_path = './static/data/List_Option.json'
+TEMPLATES_file_path = './static/data/Templates.json'
+
 
 # reading the data and putting it in a dictionary, adding default template if no template already there
 JSONDict = func.json_person_to_dictionary(JSON_file_path)
+
+# reading the templates files
+TEMPDict = func.other_json_person_to_dictionary(TEMPLATES_file_path)
 
 # putting the dictionary in the JSON file
 func.dictionary_to_json(JSON_file_path, JSONDict)
@@ -63,28 +67,30 @@ def redirect_to_template_from_index_table(name):
 @app.route('/template-instance_<name>/', methods=['GET', 'POST'])
 def template(name):
     all_info = func.get_all_info(JSONDict, name)
-    temp = func.get_template(JSONDict, name)
+    name_template = all_info['TEMPLATE']
+    temp = eval(TEMPDict[name_template])
     return render_template('welcome.html', all_info=all_info, template=temp, name=name)
 
 
 # creating the editing page
-@app.route('/template_<name>/edit/', methods=['POST'])
+@app.route('/template-instance_<name>/edit/', methods=['POST'])
 def redirect_to_edit(name):
     all_info = func.get_all_info(JSONDict, name)
-    temp = func.get_template(JSONDict, name)
-    options_static = func.other_json_person_to_dictionary(OPTION_file_path)
-    gender_static = options_static['GENDER']
-    return render_template('edit.html', info=all_info, template=temp, gender=gender_static, name=name)
+    name_template = all_info['TEMPLATE']
+    temp = TEMPDict[name_template]
+    temp = temp.replace('eval(', '').replace('.HTML()")', '').replace('\\', '')
+    temp = temp
+    return render_template('edit.html', template=temp, name=name)
 
 
 # replacing the data in the json file
-@app.route('/template_<name>/edit/edition', methods=['GET', 'POST', 'PATCH'])
+@app.route('/template-instance_<name>/edit/edition', methods=['GET', 'POST', 'PATCH'])
 def edit(name):
-    gender = request.form['list_gender']
-    pres_text = request.form['pres_text']
-    options = {'GENDER': gender, "PRESENTATION_TEXT": pres_text}
-    dictionary = func.edit_options(JSONDict, name, options)
-    func.dictionary_to_json(JSON_file_path, dictionary)
+    new_template = request.form['template']
+    dictionaries = func.edit_template(JSONDict, TEMPDict, name, new_template)
+    print(dictionaries)
+    func.dictionary_to_json(JSON_file_path, dictionaries[0])
+    func.dictionary_to_json(TEMPLATES_file_path, dictionaries[1])
     return redirect(url_for('template', name=name))
 
 

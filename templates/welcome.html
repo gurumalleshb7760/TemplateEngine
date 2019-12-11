@@ -11,21 +11,11 @@
 <br/>
 <!-- we get all info of the person and present it -->
 <div class="text-center">
-    <!-- changing the title depending of the gender of a person -->
-    {% if template['GENDER'] == "Female" %}
-        <h2> Welcome Ms.{{ all_info['SURNAME'] }} {{ all_info['FIRST_NAME'] }} ! </h2>
-    {% elif template['GENDER'] == "Male" %}
-        <h2> Welcome Mr.{{ all_info['SURNAME'] }} {{ all_info['FIRST_NAME'] }} ! </h2>
-    {% else %}
-        <h2> Welcome {{ all_info['SURNAME'] }} {{ all_info['FIRST_NAME'] }} ! </h2>
-    {% endif %}
+    {{ template | safe }}
 
-    <p> You are {{ all_info['AGE'] }} years old and you live in {{ all_info['CITY'] }}.</p>
-    <p> You work as a {{ all_info['WORK'] }}.</p>
-    {% if template['PRESENTATION_TEXT'] != "" %}
-    <p>{{ template['PRESENTATION_TEXT'] }}</p>
-    {% endif %}
 
-    <a href="{{ url_for('index') }}"> Previous page </a> <!-- linked to the index page -->
+   <p>
+       <a href="{{ url_for('index') }}"> Previous page </a> <!-- linked to the index page -->
+   </p>
 </div>
 {% endblock %}
