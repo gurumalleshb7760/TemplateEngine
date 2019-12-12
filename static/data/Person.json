@@ -1,7 +1,7 @@
 {
     "1": {
         "SURNAME": "DUPONT",
-        "FIRST NAME": "Simon",
+        "FIRST_NAME": "Simon",
         "AGE": 34,
         "CITY": "Paris",
         "WORK": "Fireman",
@@ -9,7 +9,7 @@
     },
     "2": {
         "SURNAME": "DUPUIS",
-        "FIRST NAME": "Jean",
+        "FIRST_NAME": "Jean",
         "AGE": 52,
         "CITY": "Nantes",
         "WORK": "Police Man",
@@ -17,7 +17,7 @@
     },
     "3": {
         "SURNAME": "MARTIN",
-        "FIRST NAME": "Laure",
+        "FIRST_NAME": "Laure",
         "AGE": 60,
         "CITY": "Nice",
         "WORK": "Cashier",
@@ -25,7 +25,7 @@
     },
     "4": {
         "SURNAME": "SMITH",
-        "FIRST NAME": "Paul",
+        "FIRST_NAME": "Paul",
         "AGE": 45,
         "CITY": "Bordeaux",
         "WORK": "Accountant",
@@ -33,7 +33,7 @@
     },
     "5": {
         "SURNAME": "LAURENT",
-        "FIRST NAME": "Mathieu",
+        "FIRST_NAME": "Mathieu",
         "AGE": 23,
         "CITY": "Orleans",
         "WORK": "Dressmaker",
@@ -41,7 +41,7 @@
     },
     "6": {
         "SURNAME": "PETIT",
-        "FIRST NAME": "Martine",
+        "FIRST_NAME": "Martine",
         "AGE": 19,
         "CITY": "Strasbourg",
         "WORK": "Head chef",
@@ -49,7 +49,7 @@
     },
     "7": {
         "SURNAME": "LACROIX",
-        "FIRST NAME": "Sylvie",
+        "FIRST_NAME": "Sylvie",
         "AGE": 48,
         "CITY": "Lille",
         "WORK": "Sport Teacher",
@@ -57,7 +57,7 @@
     },
     "8": {
         "SURNAME": "DUBOIS",
-        "FIRST NAME": "Corinne",
+        "FIRST_NAME": "Corinne",
         "AGE": 37,
         "CITY": "Toulouse",
         "WORK": "Astronaut",

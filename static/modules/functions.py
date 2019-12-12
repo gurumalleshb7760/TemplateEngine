@@ -90,8 +90,7 @@ def find_index_from_surname(dictionary, name):
 def edit_template(dictionary1, dictionary2, name, template):
     person = get_all_info(dictionary1, name)
     index = find_index_from_surname(dictionary1, name)
-    temp = template.replace('"', '\\"')
-    temp = temp[1:]
+    temp = template.replace('"', '\\"').replace('Variable(', ('Variable(name,'))
     temp = "eval(\"Sequence("+temp+").HTML()\")"
     person['TEMPLATE'] = "t_"+name+index
     dictionary1[index] = person

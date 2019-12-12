@@ -26,7 +26,7 @@ func.dictionary_to_json(JSON_file_path, JSONDict)
 # ------------ Variables and constants ------------
 # creating a list with all the names from the JSON file
 names = func.get_surnames(JSONDict)
-
+test2 = "My name is $FIRST_NAME $SURNAME, I am $AGE and I live in $CITY."
 
 # ------------ Routes ------------
 # creating the index page of our website
@@ -81,7 +81,7 @@ def redirect_to_edit(name):
     all_info = func.get_all_info(JSONDict, name)
     name_template = all_info['TEMPLATE']
     temp = TEMPDict[name_template]
-    temp = temp.replace('eval("Sequence', '').replace(').HTML()")', '').replace('\\', '')
+    temp = temp.replace('eval("Sequence(', '').replace(').HTML()")', '').replace('\\', '').replace('name,', '')
     temp = temp
     return render_template('edit.html', template=temp, name=name)
 
