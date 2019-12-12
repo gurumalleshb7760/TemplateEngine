@@ -1,6 +1,9 @@
 # -*-coding:Utf-8 -*
 from flask import *
 import static.modules.functions as func
+from Sequence import Sequence
+from Constant import Constant
+from Variable import Variable
 
 # --- calling Flask API ---
 app = Flask(__name__)
@@ -78,7 +81,7 @@ def redirect_to_edit(name):
     all_info = func.get_all_info(JSONDict, name)
     name_template = all_info['TEMPLATE']
     temp = TEMPDict[name_template]
-    temp = temp.replace('eval(', '').replace('.HTML()")', '').replace('\\', '')
+    temp = temp.replace('eval("Sequence', '').replace(').HTML()")', '').replace('\\', '')
     temp = temp
     return render_template('edit.html', template=temp, name=name)
 
@@ -88,7 +91,6 @@ def redirect_to_edit(name):
 def edit(name):
     new_template = request.form['template']
     dictionaries = func.edit_template(JSONDict, TEMPDict, name, new_template)
-    print(dictionaries)
     func.dictionary_to_json(JSON_file_path, dictionaries[0])
     func.dictionary_to_json(TEMPLATES_file_path, dictionaries[1])
     return redirect(url_for('template', name=name))

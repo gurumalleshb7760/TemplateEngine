@@ -35,7 +35,7 @@ class Sequence(Template):
         return result
 
     def __repr__(self):
-        result = "<p>"
+        result = ""
         for arg in self.sequence.values():
             if type(arg) == Constant:
                 result += Constant(arg).__str__()
@@ -43,7 +43,6 @@ class Sequence(Template):
                 result += Variable(arg.person, arg.var).__str__()
             else:
                 raise TypeError(" Your object has to be a Sequence, a Constant or a Variable")
-        result += "</p>"
         return result
 
     def __str__(self):

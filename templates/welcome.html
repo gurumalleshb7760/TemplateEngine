@@ -4,18 +4,16 @@
 <!-- Edit button allowing to modify the template -->
 <form action="{{ url_for('redirect_to_edit', name=name) }}" method="POST" class="text-center">
     <div class="text-center pull-left">
+        <a href="{{ url_for('index') }}" type="button" class="btn btn-info text-center"> Previous page </a>
         <button name="edit_button" type="submit" class="btn btn-secondary">Edit</button>
     </div>
 </form>
 <br/>
 <br/>
-<!-- we get all info of the person and present it -->
+<!-- we show the template of the person -->
 <div class="text-center">
     {{ template | safe }}
-
-
    <p>
-       <a href="{{ url_for('index') }}"> Previous page </a> <!-- linked to the index page -->
    </p>
 </div>
 {% endblock %}
