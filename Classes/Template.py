@@ -1,4 +1,4 @@
-""" This module contains TemplateClass"""
+""" This module contains Template Class"""
 
 
 class Template:

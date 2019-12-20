@@ -1,7 +1,8 @@
 """ This module contains Sequence Class"""
-from Constant import Constant
-from Variable import Variable
-from Template import Template
+from Classes.Constant import Constant
+from Classes.Variable import Variable
+from Classes.Template import Template
+from Classes.Test import Test
 
 
 class Sequence(Template):
@@ -9,7 +10,6 @@ class Sequence(Template):
     """ This object allows to create a sequence of constants and variables"""
 
     def __init__(self, *args):
-        super(Template)
         seq = {}
         for i in range(len(args)):
             seq[i] = args[i]
@@ -30,8 +30,10 @@ class Sequence(Template):
                 result += Constant(arg).HTML()
             elif type(arg) == Variable:
                 result += Variable(arg.person, arg.var).HTML()
+            elif type(arg) == Test:
+                result += Test(arg.condition, arg.ifTrue, arg.ifFalse).HTML()
             else:
-                raise TypeError(" Your object has to be a Sequence, a Constant or a Variable")
+                raise TypeError(" Your object has to be a Sequence, a Test, a Constant or a Variable")
         return result
 
     def __repr__(self):
@@ -41,8 +43,10 @@ class Sequence(Template):
                 result += Constant(arg).__str__()
             elif type(arg) == Variable:
                 result += Variable(arg.person, arg.var).__str__()
+            elif type(arg) == Test:
+                result += Test(arg.condition, arg.ifTrue, arg.ifFalse).__str__()
             else:
-                raise TypeError(" Your object has to be a Sequence, a Constant or a Variable")
+                raise TypeError(" Your object has to be a Sequence, a Test, a Constant or a Variable")
         return result
 
     def __str__(self):

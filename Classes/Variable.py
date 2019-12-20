@@ -1,17 +1,17 @@
 """ This module contains Variable Class"""
-from Template import Template
+from Classes.Template import Template
+from Classes.Expression import Expression
 import static.modules.functions as func
 
 JSON_file_path = './static/data/Person.json'
 JSONDict = func.json_person_to_dictionary(JSON_file_path)
 
 
-class Variable(Template):
+class Variable(Template, Expression):
 
     """ This object allows to create a variable"""
 
     def __init__(self, person, var):
-        super(Template)
         self._person = person
         self._var = str(var).upper()
 
@@ -34,6 +34,10 @@ class Variable(Template):
     def HTML(self):
         infos = func.get_all_info(JSONDict, self.person)
         return infos[self.var]
+
+    def value(self):
+        infos = func.get_all_info(JSONDict, self.person)
+        return int(infos[self.var])
 
     def __repr__(self):
         infos = func.get_all_info(JSONDict, self.person)

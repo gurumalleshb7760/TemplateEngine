@@ -1,9 +1,20 @@
 # -*-coding:Utf-8 -*
 from flask import *
 import static.modules.functions as func
-from Sequence import Sequence
-from Constant import Constant
-from Variable import Variable
+from Classes.Template import Template
+from Classes.Variable import Variable
+from Classes.Constant import Constant
+from Classes.Sequence import Sequence
+from Classes.Test import Test
+from Classes.Expression import Expression
+from Classes.And import And
+from Classes.Or import Or
+from Classes.Different import Different
+from Classes.Equal import Equal
+from Classes.Inferior import Inferior
+from Classes.Superior import Superior
+from Classes.InfEqu import InfEqu
+from Classes.SupEqu import SupEqu
 
 # --- calling Flask API ---
 app = Flask(__name__)

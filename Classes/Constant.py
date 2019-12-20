@@ -1,13 +1,13 @@
 """ This module contains Constant Class"""
-from Template import Template
+from Classes.Template import Template
+from Classes.Expression import Expression
 
 
-class Constant(Template):
+class Constant(Template, Expression):
 
     """ This object allows to create a constant"""
 
     def __init__(self, const):
-        super(Template)
         self._const = const
 
     def get_const(self):
@@ -19,8 +19,10 @@ class Constant(Template):
     const = property(get_const, set_const)
 
     def HTML(self):
-
         return str(self.const)
+
+    def value(self):
+        return int(self.const)
 
     def __repr__(self):
         return str(self.const)
