@@ -90,7 +90,7 @@ def find_index_from_surname(dictionary, name):
 def edit_template(dictionary1, dictionary2, name, template):
     person = get_all_info(dictionary1, name)
     index = find_index_from_surname(dictionary1, name)
-    temp = template.replace('"', '\\"').replace('Variable(', ('Variable(name,'))
+    temp = template.replace('"', '\\"').replace('Variable(', ('Variable(name,')).replace('MyList(', ('MyList(name,'))
     temp = "eval(\"Sequence("+temp+").HTML()\")"
     person['TEMPLATE'] = "t_"+name+index
     dictionary1[index] = person
@@ -117,3 +117,12 @@ def sort_by(dictionary, sort):
                 if val_dict[sort] == sorted_list[i]:
                     sorted_dict[key] = val_dict
     return sorted_dict
+
+
+# function getting a specific information on a person thanks to their index
+def find_specific_info(dictionary, index, info_title):
+    for key, value in dictionary.items():
+        if key == index:
+            val_dict = dict(value)
+            return val_dict[info_title]
+

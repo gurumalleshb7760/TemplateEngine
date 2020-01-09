@@ -21,7 +21,11 @@
         "AGE": 60,
         "CITY": "Nice",
         "WORK": "Cashier",
-        "TEMPLATE": "default"
+        "CHILDREN": [
+            "2",
+            "4"
+        ],
+        "TEMPLATE": "t_MARTIN3"
     },
     "4": {
         "SURNAME": "SMITH",
