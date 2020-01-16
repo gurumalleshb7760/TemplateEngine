@@ -59,7 +59,7 @@ class Sequence(Template):
             elif type(arg) == MyList:
                 result += MyList(arg.list).__str__()
             elif type(arg) == Iterator:
-                result += Iterator(arg).__str__()
+                result += Iterator(arg.iterator, arg.parameters).__str__()
             else:
                 raise TypeError(" Your object has to be a Sequence, a Test, a Loop, a MyList, an Iterator, a Constant or a Variable")
         return result

@@ -26,7 +26,6 @@ class Or(Expression):
     condition2 = property(_get_condition2, _set_condition2)
 
     def value(self):
-        print("Cond1= "+str(self.condition1.value())+" Cond2= "+str(self.condition2.value()))
         if self.condition1.value() or self.condition2.value():
             return 1
         else:

@@ -1,5 +1,6 @@
 """ This module contains Loop Class"""
 from Classes.Template import Template
+from Classes.Iterator import Iterator
 import static.modules.functions as func
 
 # -----------Importing the dictionary with the people's information---------------------
@@ -17,6 +18,7 @@ class Loop(Template):
         self._list = list
         self._todo = todo
 
+    """Creating getters and setters"""
     def _get_object(self):
         return self._object
 
@@ -41,15 +43,22 @@ class Loop(Template):
 
     todo = property(_get_todo, _set_todo)
 
+    """Creating the HTML function"""
     def HTML(self):
         result = ""
-        if len(self.list) == 0:
+        if len(self.list) == 0:  # if there is nothing in the list, it returns an empty string
             return result
         else:
-            for i in self.list:
-                result += str(self.todo)
-                name = func.find_specific_info(JSONDict, i, "FIRST_NAME")
-                result = result.replace(str(self.object), name)
+            for i in self.list:  # for each element in the searched field
+                result += str(self.todo)  # we add the thing to do
+                # then we search in this result if there is any occurrences of the iterator
+                # if there is, we replace it by the searched thing
+                if type(self.object) == Iterator:
+                    to_replace = ""
+                    for param in self.object.parameters:  # since severals parameters can be searched, we search for each of them
+                        specific_info = func.find_specific_info(JSONDict, i, param)
+                        to_replace += specific_info + " "
+                    result = result.replace(str(self.object.iterator), to_replace)
             return result
 
     def __repr__(self):
