@@ -12,6 +12,9 @@ To run the project :
 - launch the "main.py" file : py ./main.py
 - open a web browser and go to the address given (usually it is http://127.0.0.1:5000/)
 
+Getting documentation :
+- python -m pydoc path_of_the_file_from_source
+
 From there, you can choose a person, go to their template and edit it, then going back and do the same for someone else.
 
 
