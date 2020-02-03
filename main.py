@@ -1,4 +1,11 @@
 # -*-coding:Utf-8 -*
+# --------------------------------------------------------
+# module containing main class
+#
+# (C) 2020 Lea Banquart, Laurent Thiry, Mulhouse, France
+# Released for a school project at ENSISA
+# email lea.banquart@gmail.com
+# --------------------------------------------------------
 from flask import *
 import static.modules.functions as func
 from Classes.Template import Template
@@ -23,7 +30,6 @@ from Classes.Iterator import Iterator
 app = Flask(__name__)
 
 # ------------ creating the dictionary with our data ------------
-
 JSON_file_path = './static/data/Person.json'
 TEMPLATES_file_path = './static/data/Templates.json'
 
@@ -40,58 +46,58 @@ func.dictionary_to_json(JSON_file_path, JSONDict)
 # ------------ Variables and constants ------------
 # creating a list with all the names from the JSON file
 names = func.get_surnames(JSONDict)
-test2 = "My name is $FIRST_NAME $SURNAME, I am $AGE and I live in $CITY."
 
-# ------------ Routes ------------
-# creating the index page of our website
+
+# -------------------- Routes ---------------------
 @app.route('/')
 def index(sort='INDEX'):
+    """Creating the index page of our website."""
     infos = func.get_global_infos_except_template(JSONDict)
     parameters = func.get_parameters_names_except_template(JSONDict)
     return render_template("index.html", names=names, infos=infos, params=parameters, sort=sort)
 
 
-# creating redirection to sort the table of the index page
 @app.route('/redir_index', methods=['GET', 'POST'])
 def redirect_index():
+    """Creating redirection to sort the table of the index page."""
     sort = request.form['search-by']
     return redirect(url_for('index_sorted', sort=sort))
 
 
-# creating the index page of our website
 @app.route('/sorted_by_<sort>', methods=['GET', 'POST'])
 def index_sorted(sort):
+    """Creating the index page of our website."""
     infos = func.get_global_infos_except_template(JSONDict)
     infos_sorted = func.sort_by(infos, sort)
     parameters = func.get_parameters_names_except_template(JSONDict)
     return render_template("index.html", names=names, infos=infos_sorted, params=parameters, sort=sort)
 
 
-# creating redirection to the template from index page
 @app.route('/redir_template', methods=['GET', 'POST'])
 def redirect_to_template_from_index():
+    """Creating redirection to the template from index page."""
     name = request.form['list_name']
     return redirect(url_for('template', name=name))
 
 
-# creating redirection to the template from table in index page
 @app.route('/redir_template_from_table_<name>', methods=['GET', 'POST'])
 def redirect_to_template_from_index_table(name):
+    """Creating redirection to the template from table in index page."""
     return redirect(url_for('template', name=name))
 
 
-# creating the introduction page
 @app.route('/template-instance_<name>/', methods=['GET', 'POST'])
 def template(name):
+    """Creating the introduction page."""
     all_info = func.get_all_info(JSONDict, name)
     name_template = all_info['TEMPLATE']
     temp = eval(TEMPDict[name_template])
     return render_template('welcome.html', all_info=all_info, template=temp, name=name)
 
 
-# creating the editing page
 @app.route('/template-instance_<name>/edit/', methods=['POST'])
 def redirect_to_edit(name):
+    """Creating the editing page."""
     all_info = func.get_all_info(JSONDict, name)
     name_template = all_info['TEMPLATE']
     temp = TEMPDict[name_template]
@@ -100,9 +106,9 @@ def redirect_to_edit(name):
     return render_template('edit.html', template=temp, name=name)
 
 
-# replacing the data in the json file
 @app.route('/template-instance_<name>/edit/edition', methods=['GET', 'POST', 'PATCH'])
 def edit(name):
+    """Replacing the data in the json file."""
     new_template = request.form['template']
     dictionaries = func.edit_template(JSONDict, TEMPDict, name, new_template)
     func.dictionary_to_json(JSON_file_path, dictionaries[0])

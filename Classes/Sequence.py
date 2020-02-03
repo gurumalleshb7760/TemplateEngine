@@ -1,4 +1,10 @@
-""" This module contains Sequence Class"""
+# --------------------------------------------------------
+# module containing Sequence class
+#
+# (C) 2020 Lea Banquart, Laurent Thiry, Mulhouse, France
+# Released for a school project at ENSISA
+# email lea.banquart@gmail.com
+# --------------------------------------------------------
 from Classes.Constant import Constant
 from Classes.Variable import Variable
 from Classes.Template import Template
@@ -9,24 +15,27 @@ from Classes.Iterator import Iterator
 
 
 class Sequence(Template):
-
-    """ This object allows to create a sequence of constants and variables"""
+    """ This object allows to create a sequence of constants, variables, tests, loops or other sequences."""
 
     def __init__(self, *args):
+        """Initiates with all the arguments of the sequence."""
         seq = {}
         for i in range(len(args)):
             seq[i] = args[i]
         self._sequence = seq
 
     def get_sequence(self):
+        """Returns the sequence as a dictionary"""
         return self._sequence
 
     def set_sequence(self, s):
+        """Sets the sequence"""
         self._sequence = s
 
     sequence = property(get_sequence, set_sequence)
 
     def HTML(self):
+        """ Returns the HTML representation of this sequence, which is the HTML representation of all its arguments"""
         result = ""
         for arg in self.sequence.values():
             if type(arg) == Constant:
@@ -46,6 +55,7 @@ class Sequence(Template):
         return result
 
     def __repr__(self):
+        """Returns the representation of the sequence"""
         result = ""
         for arg in self.sequence.values():
             if type(arg) == Constant:
@@ -65,6 +75,7 @@ class Sequence(Template):
         return result
 
     def __str__(self):
+        """Returns the string representation of the sequence"""
         return self.__repr__()
 
 

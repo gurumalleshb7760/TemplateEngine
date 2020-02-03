@@ -13,6 +13,9 @@
         "AGE": 52,
         "CITY": "Nantes",
         "WORK": "Police Man",
+        "CHILDREN": [
+            "5"
+        ],
         "TEMPLATE": "default"
     },
     "3": {
