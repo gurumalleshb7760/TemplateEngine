@@ -5,6 +5,7 @@
 # Released for a school project at ENSISA
 # email lea.banquart@gmail.com
 # --------------------------------------------------------
+from collections import Iterable
 from Classes.Template import Template
 from Classes.Expression import Expression
 import static.modules.functions as func
@@ -23,8 +24,8 @@ class Variable(Template, Expression):
         self._person = person
         self._var = str(var).upper()
         infos = func.get_all_info(JSONDict, self._person)
-        if infos is not None:
-            self._list = list(infos[self.var])
+        if infos is not None and isinstance(infos[self.var], Iterable):
+                self._list = list(infos[self.var])
         else:
             self._list = []
         super(Variable, self).__init__(self._list)

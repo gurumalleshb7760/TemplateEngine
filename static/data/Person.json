@@ -10,7 +10,7 @@
     "2": {
         "SURNAME": "DUPUIS",
         "FIRST_NAME": "Jean",
-        "AGE": 52,
+        "AGE": 32,
         "CITY": "Nantes",
         "WORK": "Police Man",
         "CHILDREN": [
@@ -33,7 +33,7 @@
     "4": {
         "SURNAME": "SMITH",
         "FIRST_NAME": "Paul",
-        "AGE": 45,
+        "AGE": 40,
         "CITY": "Bordeaux",
         "WORK": "Accountant",
         "TEMPLATE": "default"
