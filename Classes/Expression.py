@@ -7,7 +7,7 @@
 # --------------------------------------------------------
 
 
-class Expression:
+class Expression(list):
     """ This object allows to create an expression to be analyzed (abstract class)."""
 
     def value(self):

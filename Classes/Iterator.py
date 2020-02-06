@@ -40,7 +40,7 @@ class Iterator(Template):
 
     def HTML(self):
         """Returns the HTML representation of the iterator with is void since it just precise what we're looking for for the loop."""
-        return ""
+        return str(self.iterator)
 
     def __repr__(self):
         """Returns the representation of the iterator, here just the iterator"""

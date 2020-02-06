@@ -23,7 +23,6 @@ from Classes.Superior import Superior
 from Classes.InfEqu import InfEqu
 from Classes.SupEqu import SupEqu
 from Classes.Loop import Loop
-from Classes.MyList import MyList
 from Classes.Iterator import Iterator
 
 # --- calling Flask API ---

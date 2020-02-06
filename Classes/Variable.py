@@ -22,6 +22,12 @@ class Variable(Template, Expression):
         """Initiates the object with the person to look for and the field to look."""
         self._person = person
         self._var = str(var).upper()
+        infos = func.get_all_info(JSONDict, self._person)
+        if infos is not None:
+            self._list = list(infos[self.var])
+        else:
+            self._list = []
+        super(Variable, self).__init__(self._list)
 
     def get_person(self):
         """Returns the person."""
@@ -43,6 +49,16 @@ class Variable(Template, Expression):
 
     var = property(get_var, set_var)
 
+    def get_list(self):
+        """Returns the list created."""
+        return self._list
+
+    def set_list(self, p):
+        """Sets the list created."""
+        self._list = p
+
+    list = property(get_list, set_list)
+
     def HTML(self):
         """Returns the HTML representation of the variable"""
         infos = func.get_all_info(JSONDict, self.person)
@@ -56,7 +72,10 @@ class Variable(Template, Expression):
     def __repr__(self):
         """Returns the representation of the variable"""
         infos = func.get_all_info(JSONDict, self.person)
-        return str(infos[self.var])
+        if infos is not None:
+            return str(infos[self.var])
+        else:
+            return ""
 
     def __str__(self):
         """Returns the string representation of the variable"""

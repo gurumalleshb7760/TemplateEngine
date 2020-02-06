@@ -97,7 +97,7 @@ def edit_template(dictionary1, dictionary2, name, template):
     """Function editing the dictionary."""
     person = get_all_info(dictionary1, name)
     index = find_index_from_surname(dictionary1, name)
-    temp = template.replace('"', '\\"').replace('Variable(', ('Variable(name,')).replace('MyList(', ('MyList(name,'))
+    temp = template.replace('"', '\\"')
     temp = "eval(\"Sequence("+temp+").HTML()\")"
     person['TEMPLATE'] = "t_"+name+index
     dictionary1[index] = person

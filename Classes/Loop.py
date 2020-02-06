@@ -61,7 +61,7 @@ class Loop(Template):
             return result
         else:
             for i in self.list:  # for each element in the searched field
-                result += str(self.todo)  # we add the thing to do
+                result += self.todo.HTML() # we add the thing to do
                 # then we search in this result if there is any occurrences of the iterator
                 # if there is, we replace it by the searched thing
                 if type(self.object) == Iterator:
